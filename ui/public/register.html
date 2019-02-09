@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Register Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="register.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <script src=""></script>
+</head>
+<body>
+    
+    <div class="Navbar sticky">
+        <nav class="Navbar__Items">
+            <div class="Navbar__Link Navbar__Link-brand">
+                Meal App <span><i class="fas fa-utensils"></i></span>
+            </div>
+        </nav>
+        <nav class="Navbar__Items Navbar__Items--right">
+            <div class="Navbar__Link ">
+                Sign Up
+            </div>
+            <div class="Navbar__Link ">
+                Login
+            </div>
+        </nav>    
+    </div>
+
+    <div class="card">
+        <form action="">
+            <div class="container">
+                <h1 class="yea">Sign Up</h1>
+
+                <p class="hide">Kindly Sign Up to use Meal App 😊🍔</p>
+
+                <hr>
+
+                <div class="pretty"> 
+                    <label for="username"><b>Username<span><i class="fas fa-user"></i></span></b></label>
+                    <input type="text" name="username" placeholder="Enter Username" required>
+
+                    <label for="password"><b>Password<span><i class="fas fa-key"></i></span></b></label>
+                    <input type="password" name="password" placeholder="Enter Password" required>
+
+                    <label for="confirmPassword"><b>Confirm Password<span><i class="fas fa-key"></i></span></b></label>
+                    <input type="password" name="confirmPassword" placeholder="Confirm Password" required>
+
+                    <hr>
+                </div>   
+                    <div class="btn">
+                        <button type="submit" class="registerBtn">Register</button>
+                    </div>
+
+                    <div class="yaga">
+                        <p>Already have an account? <a href="#">Login</a></p>
+                    </div>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>

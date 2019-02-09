@@ -1,0 +1,14 @@
+{
+  "name": "mealapp",
+  "version": "1.0.0",
+  "description": "meal booking app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Olatunbosun Olabisi",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}

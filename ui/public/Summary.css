@@ -1,0 +1,107 @@
+body {
+    margin: auto 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: lightslategray;
+}
+
+h1 {
+    padding-top: 60px;
+    display: flex;
+    justify-content: center;
+}
+
+h2 {
+    padding-left: 100px;
+}
+
+.Navbar__Link:hover {
+    color: red;
+}
+
+.Navbar {
+    display: flex;
+    /* background-color: #46ACC2; */
+    padding: 16px;
+    font-family: sans-serif;
+    color: white;
+    font-size: 20px;
+}
+
+.Navbar__Link-brand {
+    font-family: 'Staatliches', cursive;
+    font-size: 30px;
+    font-weight: 100;
+    margin-left: 40px;
+}
+
+.sticky {
+    position: fixed;
+    width: 100%;
+    top: 0;
+}
+
+.btns {
+    display: flex;
+    justify-content: center;
+}
+
+.falz {
+    width: 10%;
+    background-color: green;
+    color: white;
+    display: inline-block;
+}
+
+.Navbar__Items {
+    display: flex;
+}
+
+.Navbar__Link {
+    padding-right: 15px;
+    cursor: pointer;
+}
+
+.Navbar__Items--right {
+    margin-left: auto;
+    padding: 20px;
+}
+
+/* Cards */
+.meoww {
+    text-align: center;
+    display: inline;
+}
+
+.gbe-body {
+    display: flex;
+    justify-content: center;
+    color: lightblue;
+}
+
+/* Grids */
+
+.onise {
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+}
+
+#left {
+    padding-left: 50px;
+}
+
+#gbenga {
+    padding-left: 50px;
+}
+
+#ye {
+    color: blue;
+}
+
+#yea {
+    color: yellow;
+}
+
+#yeaa {
+    color: green;
+}
