@@ -1,7 +1,10 @@
 body {
     margin: auto 0;
     font-family: Arial, Helvetica, sans-serif;
-    background-color: lightslategray;
+    /* background-color: lightslategray; */
+    background-image: url("./imgs/bgs/brooke-lark-500141-unsplash.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 h1 {
@@ -12,6 +15,26 @@ h1 {
 
 h2 {
     padding-left: 100px;
+}
+
+img {
+    height: 150px;
+    width: 100%
+}
+
+footer {
+    padding-top: 200px;
+}
+
+a:hover {
+    color: red;
+}
+
+.sanya {
+    cursor: pointer;
+    outline: none;
+    text-decoration: none;
+    text-decoration-color: white;
 }
 
 .Navbar__Link:hover {
@@ -83,7 +106,7 @@ h2 {
 }
 
 .grid {
-    padding-top: 100px;
+    padding-top: 10px;
 }
 
 .cards {
@@ -103,6 +126,8 @@ h2 {
   }
   .card .text {
     padding: 0 20px 20px;
+    text-align: center;
+    background-blend-mode: darken;
   }
   .card .text > button {
     background: gray;
@@ -111,3 +136,40 @@ h2 {
     padding: 10px;
     width: 100%;
     }
+
+.end {
+    display: flex;
+    justify-content: center;
+}    
+
+.ene {
+    color: red;
+}
+
+.after {
+    padding-top: 100px;
+    padding-left: 100px;
+}
+
+.price {
+    padding-left: 10px;
+    font-size: 15px;
+}
+
+.yan {
+    color: red;
+}
+
+#gbefun {
+    font-size: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 800;
+    color: lightsalmon;
+}
+
+#today {
+    padding-left: 100px;
+    padding-top: 50px;
+    padding-bottom: 0px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
