@@ -20,8 +20,8 @@ const mealService = {
         dummyData.meals.push(meal);
         return meal;
     },
-    
-    getMeal(id) {
+
+    getAMeal(id) {
         const meal = dummyData.meals.find(meal => meal.id = id);
         return meal || {}
     }
