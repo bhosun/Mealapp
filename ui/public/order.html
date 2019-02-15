@@ -6,22 +6,70 @@
     <title>Order Meal</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="order.css" />
-    <script src="main.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 </head>
 <body>
+
+    <div class="Navbar sticky">
+      <nav class="Navbar__Items">
+          <div class="Navbar__Link Navbar__Link-brand">
+               Meal App <span><i class="fas fa-utensils"></i></span>
+          </div>
+      </nav>
+      <nav class="Navbar__Items Navbar__Items--right">
+          <div class="Navbar__Link" >
+              <a class="sanya" href="register.html">Sign Up</a>
+          </div>
+          <div class="Navbar__Link ">
+              <a class="sanya" href="login.html">Login</a>
+          </div>
+      </nav>    
+    </div>
     
-    <form>
-        <label for="address">Home Adress:</label>
-        <input name="address" placeholder="Home Adress" type="text">
+    <div class="grid">
+        <main class="cards">
+            <article class="card">
+                <img src="imgs/amalala.jpg" alt="Sample photo">
+                <div class="text">
+                    <h3>Amala</h3>
+                    <h2 class="price">Price: 500</h2>
+                </div>
+            </article>
+            <p><i class="fas fa-plus"></i></p>
+            <article class="card">
+                <img src="imgs/efo.jpg" alt="Sample photo">
+                <div class="text">
+                    <h3>Efo riro</h3>
+                    <h2 class="price">Price: 300</h2>
+                </div>
+            </article>
+            <p><i class="fas fa-plus"></i></p>
+            <article class="card">
+                <img src="imgs/drumstick.jpg" alt="Sample photo">
+                <div class="text">
+                    <h3>Peppered Drumstick</h3>
+                    <h2 class="price">Price: 300</h2>
+                </div>
+            </article>
+        </main>
+    </div>
 
-        <label for="address">Home Adress:</label>
-        <input name="address" placeholder="Home Adress" type="text">
+    <div class="order">
+        <form>
+            <label for="address">Home Adress:</label>
+            <input name="address" placeholder="Home Adress" type="text">
 
-        <button>Submit</button>
+            <div>
+                <label for="quantity">Quantity:</label>
+                <input name="quantity" placeholder="What quantity do you want" type="number">
+            </div>    
 
-    </form>
+            <p>Price: 1100 Naira</p>
 
-    <button>Order</button>
+            <button>Proceed</button>
+
+        </form>
+    </div>    
 
 </body>
 </html>

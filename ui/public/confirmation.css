@@ -1,0 +1,30 @@
+body {
+    margin: auto 0;
+    font-family: Arial, Helvetica, sans-serif;
+    /* background-color: lightslategray; */
+    background-image: url("./imgs/bgs/dose-juice-1184446-unsplash.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+p {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-style: oblique;
+    font-size: 30px;
+    font-weight: bolder;
+    color: blue;
+}
+
+.confirm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
+}
+
+.receipt {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 100px;
+}
