@@ -5,6 +5,10 @@ class Meal {
         this.size = null;
         this.price = null;
     }
+
 }
 
 export default Meal;
+
+
+
