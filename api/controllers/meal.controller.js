@@ -33,6 +33,25 @@ const mealController = {
             status: "success",
             data: foundMeal
         }).status(200);
+    },
+
+    updateMeal(req, res) {
+        const id = req.params.id;
+        const mealy = req.body;
+        const yin = mealService.putAMeal(mealy, id);
+            return res.json({
+                status: "success",
+                data: yin
+            }).status(200);
+    },
+
+    deleteMeal(req, res) {
+        const id = req.params.id;
+        const remove = mealService.removeMeal(id);
+        return res.json({
+            status: "success",
+            data: remove
+        }).status(200);
     }
 };
 
