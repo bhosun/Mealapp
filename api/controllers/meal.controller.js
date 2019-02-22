@@ -3,10 +3,10 @@ import mealService from '../services/meal.service'
 const mealController = {
     fetchAllMeals(req, res) {
         const allMeals = mealService.fetchAllMeals();
-        return res.json({
+        return res.status(200).json({
             status: "success",
             data: allMeals
-        }).status(201);
+        })
     },
 
     addAMeal(req, res) {
@@ -19,39 +19,58 @@ const mealController = {
          * }
          */
         const newMeal = req.body;
+
+        if(!newMeal.name || !newMeal.price || !newMeal.size) {
+            return res.status(400).send('fill in all parameters');
+        }
+
         const createdMeal = mealService.addMeal(newMeal);
-        return res.json({
+        return res.status(201).json({
             status: 'success',
             data: createdMeal
-        }).status(201)
+        })
     },
 
     getSingleMeal(req, res) {
         const id = req.params.id;
         const foundMeal = mealService.getAMeal(id);
-        return res.json({
-            status: "success",
-            data: foundMeal
-        }).status(200);
+
+        if(Number.isNaN(Number(id))) {
+            return res.status(400).send('Your id is not a number! it must be a number');
+        } else {
+            return res.status(200).json({
+                status: "success",
+                data: foundMeal
+            })
+        }
     },
 
     updateMeal(req, res) {
-        const id = req.params.id;
+        const { id } = req.params;
         const mealy = req.body;
+
+        if (Number.isNaN(Number(id))) {
+            return res.status(400).send('Please make sure you input a Number')
+        }
         const yin = mealService.putAMeal(mealy, id);
-            return res.json({
-                status: "success",
-                data: yin
-            }).status(200);
+        return res.status(201).json({
+            status: "success",
+            data: yin
+        })
     },
 
     deleteMeal(req, res) {
         const id = req.params.id;
         const remove = mealService.removeMeal(id);
-        return res.json({
+
+        if(remove == null) {
+            return res.status(400).send(`cannot delete meal with id ${id} now`)
+        }
+
+        return res.status(200).json({
             status: "success",
             data: remove
-        }).status(200);
+        })
     }
 };
 
