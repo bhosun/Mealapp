@@ -33,7 +33,7 @@ describe('Get /menus', () => {
  * Test for the Post Route
  */
 
-describe('Post /meals', () => {
+describe('Post /menus', () => {
     it('should not post a menu without name of Menu', (done) => {
         const menu = {
             id: 1,
