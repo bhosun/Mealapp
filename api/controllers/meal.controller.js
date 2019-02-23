@@ -21,7 +21,10 @@ const mealController = {
         const newMeal = req.body;
 
         if(!newMeal.name || !newMeal.price || !newMeal.size) {
-            return res.status(400).send('fill in all parameters');
+            return res.status(400).json({
+                status: 'error',
+                data: ('Input the Parameters Rightly')
+            });
         }
 
         const createdMeal = mealService.addMeal(newMeal);
@@ -36,7 +39,10 @@ const mealController = {
         const foundMeal = mealService.getAMeal(id);
 
         if(Number.isNaN(Number(id))) {
-            return res.status(400).send('Your id is not a number! it must be a number');
+            return res.status(400).json({
+                status: "error",
+                data: 'Your id is not a number! it must be a number'
+            });
         } else {
             return res.status(200).json({
                 status: "success",
@@ -50,7 +56,9 @@ const mealController = {
         const mealy = req.body;
 
         if (Number.isNaN(Number(id))) {
-            return res.status(400).send('Please make sure you input a Number')
+            return res.status(400).json({
+                message: 'Please make sure you input a Number'
+            })
         }
         const yin = mealService.putAMeal(mealy, id);
         return res.status(201).json({
@@ -64,7 +72,9 @@ const mealController = {
         const remove = mealService.removeMeal(id);
 
         if(remove == null) {
-            return res.status(400).send(`cannot delete meal with id ${id} now`)
+            return res.status(400).json({
+                message: `cannot delete meal with id ${id} now`
+            })
         }
 
         return res.status(200).json({
