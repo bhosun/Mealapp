@@ -6,7 +6,10 @@ import dummyData from '../utils/dummyData';
 
 chai.use(chaiHttp);
 const should = chai.should();
-// TESTS
+
+                    /*
+                    // TESTS
+                    */
 
 /*
 // Test to get meals /GET
@@ -153,7 +156,7 @@ describe('Put /meal/:id', () => {
         done();    
         });
     });
-});;
+});
 
 /*
 // Test the Delete Route
