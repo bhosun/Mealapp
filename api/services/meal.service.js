@@ -37,9 +37,14 @@ const mealService = {
     },
 
     removeMeal(id) {
-        const mealDelete = dummyData.meals.find(meal => meal.id == id);
-        dummyData.meals.splice(mealDelete.id - 1, 1);
-        return mealDelete;
+        const foundMeal = dummyData.meals.find(meal => meal.id === Number(id));
+        if (foundMeal) {
+            const index = dummyData.meals.indexOf(foundMeal);
+            if (index > -1) {
+                dummyData.meals.splice(index, 1);
+            }
+        }
+    return foundMeal;
     }
 }
 
