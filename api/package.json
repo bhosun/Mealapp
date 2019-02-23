@@ -4,6 +4,7 @@
   "description": "meal booking app",
   "main": "index.js",
   "scripts": {
+    "test": "mocha --require @babel/register",
     "start": "nodemon --exec babel-node index.js"
   },
   "author": "Olatunbosun Olabisi",
@@ -18,8 +19,13 @@
     "nodemon": "^1.18.10"
   },
   "devDependencies": {
+    "@babel/register": "7.0.0",
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.1",
     "eslint": "^5.13.0",
     "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-import": "^2.16.0"
+    "eslint-plugin-import": "^2.16.0",
+    "mocha": "^6.0.0",
+    "should": "^13.2.3"
   }
 }
