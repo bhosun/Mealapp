@@ -1,1 +1,1 @@
-# Meal App [![Build Status](https://travis-ci.org/bhosun/Mealapp.svg?branch=develop)](https://travis-ci.org/bhosun/Mealapp)
+# Meal App [![Build Status](https://travis-ci.org/bhosun/Mealapp.svg?branch=develop)](https://travis-ci.org/bhosun/Mealapp) [![Coverage Status](https://coveralls.io/repos/github/bhosun/Mealapp/badge.svg?branch=add-travis-build)](https://coveralls.io/github/bhosun/Mealapp?branch=add-travis-build)
