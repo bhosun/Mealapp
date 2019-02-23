@@ -156,7 +156,7 @@ describe('Put /meal/:id', () => {
         done();    
         });
     });
-});;
+});
 
 /*
 // Test the Delete Route

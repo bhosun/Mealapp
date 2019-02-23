@@ -14,17 +14,17 @@ const orderController = {
         const orderyea = req.body;
 
         if(!orderyea.food || !orderyea.address || !orderyea.quantity || !orderyea.price) {
-            return res.status(201).json({
+            return res.status(400).json({
                 status: 'error',
                 message: 'fill in the right details'
             })
         }
 
         const add = orderService.addOrder(orderyea);
-        return res.json({
+        return res.status(201).json({
             status: "success",
             data: add
-        }).status(200);
+        });
     },
 
     editOrder(req, res) {
@@ -38,10 +38,10 @@ const orderController = {
         }
 
         const uyi = orderService.updateOrder(nilo, id);
-        return res.json({
+        return res.status(200).json({
             status: "success",
             data: uyi
-        }).status(200);
+        });
     }
 }
 
