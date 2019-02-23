@@ -6,7 +6,10 @@ import dummyData from '../utils/dummyData';
 
 chai.use(chaiHttp);
 const should = chai.should();
-// TESTS
+
+                    /*
+                    // TESTS
+                    */
 
 /*
 // Test to get meals /GET
