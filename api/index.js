@@ -2,8 +2,8 @@ import express from 'express';
 import bodyParser from 'body-parser';
 
 const app = express();
-
-const PORT = 8000;
+const port = process.env.PORT || 8000;
+const VERSION_API = '/api/v1'
 
 app.use(bodyParser.json());
 
@@ -17,13 +17,14 @@ app.get("/", (req, res) => {
 });
 
 // handle
-app.use("/api/v1/meals", mealRoutes);
-app.use("/api/v1/menus", menuRoutes);
-app.use("/api/v1/orders", orderRoutes);
+app.use(`${VERSION_API}/meals`, mealRoutes);
+app.use(`${VERSION_API}/menus`, menuRoutes);
+app.use(`${VERSION_API}/orders`, orderRoutes);
+
+app.listen(port, () => {
+    console.log(`app is running on PORT ${port}`);
+});
 
 export default app;
 
-app.listen(PORT, () => {
-    console.log(`app is running on PORT ${PORT}`);
-});
 
