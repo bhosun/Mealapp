@@ -1,0 +1,134 @@
+body{
+	background: url('./imgs/bgs/alex-loup-397220-unsplash.jpg') no-repeat center center fixed;
+	background-size: cover;
+	background-position: center;
+	color: white;
+	font-family: 'Lato', sans-serif;
+	margin: 0;
+
+}
+html{
+     height: 100%
+}
+
+#content{
+	text-align: center;
+	padding-top: 20%;
+	text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+	             0px 8px 13px rgba(0,0,0,0.1),
+	             0px 18px 23px rgba(0,0,0,0.1);
+}
+h1{
+	display: block;
+	font-weight: 700;
+	font-size: 6.5em;
+	font-family: cursive;
+	line-height: 1.1;
+	color: white;
+	margin-bottom: 12px;
+}
+hr{
+	width: 400px;
+	border-top: 1px solid #f8f8f8;
+	border-bottom: 1px solid rgba(0,0,0,0.2);
+
+}
+h3{
+	display: block;
+	font-size: 24px;
+	margin-top: 5px;
+	margin-bottom: 10px;
+	font-family: cursive;
+	font-weight: 500;
+	color: #714feb;
+	line-height: 1.1;
+
+}
+
+button {
+	border: none;
+	color: black;
+	padding: 12px 18px;
+	background-color: #ccc;
+	text-align: center;
+	font-size: 18px;
+	line-height: 1.33333;
+	margin-right: 4px;
+	border-radius: 6px;
+	font-weight: lighter;
+	-webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+
+}
+button:hover {
+	background-color: #fff;
+	color: black;
+	border: 1px solid transparent;
+}
+
+
+@media only screen and (max-width: 680px){
+}
+
+a:hover {
+    color: red;
+}
+
+.sanya {
+    cursor: pointer;
+    outline: none;
+    text-decoration: none;
+    text-decoration-color: white;
+}
+
+.Navbar__Link:hover {
+    color: red;
+}
+
+.Navbar {
+    display: flex;
+    /* background-color: #46ACC2; */
+    padding: 16px;
+    font-family: sans-serif;
+    color: white;
+    font-size: 20px;
+}
+
+.Navbar__Link-brand {
+    font-family: 'Staatliches', cursive;
+    font-size: 30px;
+    font-weight: 100;
+    margin-left: 40px;
+}
+
+.sticky {
+    position: fixed;
+    width: 100%;
+    top: 0;
+}
+
+.btns {
+    display: flex;
+    justify-content: center;
+}
+
+.falz {
+    width: 10%;
+    background-color: green;
+    color: white;
+    display: inline-block;
+}
+
+.Navbar__Items {
+    display: flex;
+}
+
+.Navbar__Link {
+    padding-right: 15px;
+    cursor: pointer;
+}
+
+.Navbar__Items--right {
+    margin-left: auto;
+    padding: 20px;
+}
