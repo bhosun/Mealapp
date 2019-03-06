@@ -1,13 +1,18 @@
 import mealService from '../services/meal.service'
+import Meal from '../models/meal.model';
 
 const mealController = {
     fetchAllMeals(req, res) {
         const allMeals = mealService.fetchAllMeals();
-        return res.status(200).json({
-            status: "success",
-            data: allMeals
-        })
-    },
+        return allMeals
+            .then(meal => {
+                res.status(200).json({
+                status: "success",
+                data: meal
+                })
+            })    
+            .catch(err => console.log(err));    
+        },
 
     addAMeal(req, res) {
         /**
@@ -20,7 +25,7 @@ const mealController = {
          */
         const newMeal = req.body;
 
-        if(!newMeal.name || !newMeal.price || !newMeal.size) {
+        if(!newMeal.name || !newMeal.imageurl) {
             return res.status(400).json({
                 status: 'error',
                 data: ('Input the Parameters Rightly')
@@ -28,10 +33,14 @@ const mealController = {
         }
 
         const createdMeal = mealService.addMeal(newMeal);
-        return res.status(201).json({
-            status: 'success',
-            data: createdMeal
-        })
+        return createdMeal
+            .then(meal => {
+                res.status(201).json({
+                status: 'success',
+                data: meal
+                })
+            })
+            .catch(err => console.log(err));
     },
 
     getSingleMeal(req, res) {
@@ -44,11 +53,15 @@ const mealController = {
                 data: 'Your id is not a number! it must be a number'
             });
         } else {
-            return res.status(200).json({
-                status: "success",
-                data: foundMeal
-            })
-        }
+            return foundMeal
+                .then(meal => { 
+                    res.status(200).json({
+                    status: "success",
+                    data: foundMeal
+                    })
+                })
+                .catch(err => console.log(err));
+            }
     },
 
     updateMeal(req, res) {
@@ -61,10 +74,14 @@ const mealController = {
             })
         }
         const yin = mealService.putAMeal(mealy, id);
-        return res.status(201).json({
-            status: "success",
-            data: yin
-        })
+        return yin
+            .then(
+                res.status(201).json({
+                status: "success",
+                data: yin
+                })
+            )
+            .catch(err => console.log(err));
     },
 
     deleteMeal(req, res) {
@@ -77,10 +94,14 @@ const mealController = {
             })
         }
 
-        return res.status(200).json({
-            status: "success",
-            data: remove
-        })
+        return remove
+            .then(
+                res.status(200).json({
+                status: "success",
+                data: remove
+                })
+            )
+            .catch(err => console.log(err));    
     }
 };
 

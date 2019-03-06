@@ -3,10 +3,14 @@ import menuService from '../services/menu.service';
 const menuController = {
     fetchAllMenus(req, res) {
         const allMenus = menuService.fetchAllMenus();
-        return res.status(201).json({
-            status: "success",
-            data: allMenus
-        })
+        return allMenus
+            .then(menu => {
+                res.status(201).json({
+                status: "success",
+                data: menu
+                });
+            })
+            .catch(err => console.log(err));    
     },
 
     addMenu(req, res) {
@@ -21,11 +25,15 @@ const menuController = {
 
         const add = menuService.addMenu(dbody);
 
-        return res.status(201).json({
-            status: "success",
-            data: add
-        })
-    }
+        return add
+            .then(menu => {
+                    res.status(201).json({
+                    status: "success",
+                    data: menu
+                    })
+            })
+            .catch(err => console.log(err))
+        }  
 }
 
 export default menuController;
