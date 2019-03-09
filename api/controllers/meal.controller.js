@@ -1,5 +1,5 @@
 import mealService from '../services/meal.service'
-import Meal from '../models/meal.model';
+// import Meal from '../models/meal.model';
 
 const mealController = {
     fetchAllMeals(req, res) {
