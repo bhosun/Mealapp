@@ -22,6 +22,7 @@ import mealRoutes from './routes/meal.route';
 import menuRoutes from './routes/menu.route';
 import orderRoutes from './routes/order.route';
 import userRoutes from './routes/user.route';
+import catererRoutes from './routes/caterer.route';
 
 app.get("/", (req, res) => {
     return res.send('The API works');
@@ -31,7 +32,8 @@ app.get("/", (req, res) => {
 app.use(`${VERSION_API}/meals`, mealRoutes);
 app.use(`${VERSION_API}/menus`, menuRoutes);
 app.use(`${VERSION_API}/orders`, orderRoutes);
-app.use(`${VERSION_API}/auth`, userRoutes);
+app.use(`${VERSION_API}/user`, userRoutes);
+app.use(`${VERSION_API}/caterer`, catererRoutes);
 
 
 // User.hasMany(Order, { constraints: true, onDelete: 'CASCADE' });

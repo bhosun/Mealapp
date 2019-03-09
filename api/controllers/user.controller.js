@@ -12,7 +12,6 @@ class userController  {
             const safeUser = {
                 id: newUser.id,
                 name: newUser.name,
-                password: newUser.password
             };
             const jwtToken = jwt.sign({ user: safeUser }, config.secret, {
                 expiresIn: 86400
