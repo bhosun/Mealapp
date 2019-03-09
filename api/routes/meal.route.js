@@ -1,6 +1,4 @@
 import { Router } from 'express';
-
-
 import mealController from '../controllers/meal.controller';
 
 const router = Router();
