@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import config from '../config';
 
-class userController  {
+class UserController  {
      static async registerUser(req, res) {
         try {
             const { name, password } = req.body;
@@ -63,4 +63,4 @@ class userController  {
     } 
 }
 
-export default userController;
+export default UserController;
