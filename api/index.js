@@ -5,7 +5,7 @@ import Menu from './models/menu.model';
 import Order from './models/order.model';
 import User from './models/user.model';
 import Caterer from './models/caterer.model';
-import router from './controllers/auth.controller';
+// import router from './controllers/auth.controller';
 
 const app = express();
 const port = process.env.PORT || 8000;
@@ -21,16 +21,18 @@ import db from './config/db';
 import mealRoutes from './routes/meal.route';
 import menuRoutes from './routes/menu.route';
 import orderRoutes from './routes/order.route';
+import userRoutes from './routes/user.route';
 
 app.get("/", (req, res) => {
     return res.send('The API works');
 });
 
 // handle
-app.use(`${VERSION_API}/auth`, router);
 app.use(`${VERSION_API}/meals`, mealRoutes);
 app.use(`${VERSION_API}/menus`, menuRoutes);
 app.use(`${VERSION_API}/orders`, orderRoutes);
+app.use(`${VERSION_API}/auth`, userRoutes);
+
 
 // User.hasMany(Order, { constraints: true, onDelete: 'CASCADE' });
 // Order.belongsTo(Caterer, { constraints: true, onDelete: 'CASCADE' });
