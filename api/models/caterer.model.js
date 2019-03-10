@@ -1,6 +1,10 @@
 import Sequelize from 'sequelize';
 import db from '../config/db';
 
+import Meal from './meal.model';
+import Menu from './menu.model';
+import Order from './order.model';
+
 const Caterer = db.define('caterer', {
   id: {
     type: Sequelize.INTEGER,

@@ -30,13 +30,6 @@ app.use(`${VERSION_API}/orders`, orderRoutes);
 app.use(`${VERSION_API}/user`, userRoutes);
 app.use(`${VERSION_API}/caterer`, catererRoutes);
 
-
-// User.hasMany(Order, { constraints: true, onDelete: 'CASCADE' });
-// Order.belongsTo(Caterer, { constraints: true, onDelete: 'CASCADE' });
-// Meal.belongsTo(Caterer, { constraints: true, onDelete: 'CASCADE' });
-// Menu.belongsTo(Caterer, User, { constraints: true, onDelete: 'CASCADE' });
-
-
 db.sync()
   .then(() => {
       app.listen(port);
