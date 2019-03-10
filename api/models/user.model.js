@@ -1,6 +1,8 @@
 import Sequelize from 'sequelize';
 import db from '../config/db';
 
+import Order from './order.model';
+
 const User = db.define('user', {
     id: {
       type: Sequelize.INTEGER,
