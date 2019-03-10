@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import config from '../config';
 
-class catererController  {
+class CatererController  {
      static async registerCaterer(req, res) {
         try {
             const { username, phone, catering_company, password } = req.body;
@@ -15,7 +15,7 @@ class catererController  {
                 phone: caterer.phone,
                 catering_company: caterer.catering_company,
             };
-            const jwtToken = jwt.sign({ caterer: safeCat }, config.secret, {
+            const jwtToken = jwt.sign({ caterer: safeCat, isCaterer: true }, config.secret, {
                 expiresIn: 86400
             });
             return res.status(201).json({
@@ -49,7 +49,7 @@ class catererController  {
                 phone: dCaterer.phone,
                 catering_company: dCaterer.catering_company,
             };
-            const jwtToken = jwt.sign({ dCaterer: safeCat }, config.secret, {
+            const jwtToken = jwt.sign({ dCaterer: safeCat, isCaterer: true }, config.secret, {
                 expiresIn: 86400
             });
             return res.status(200).json({
@@ -67,4 +67,4 @@ class catererController  {
     } 
 }
 
-export default catererController;
+export default CatererController;

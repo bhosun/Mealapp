@@ -1,10 +1,10 @@
 import { Router } from 'express';
-import catererController from '../controllers/caterer.controller';
+import CatererController from '../controllers/caterer.controller';
 
 const router = Router();
 
-router.post('/register', catererController.registerCaterer);
-router.post('/login', catererController.loginUser);
+router.post('/register', CatererController.registerCaterer);
+router.post('/login', CatererController.loginUser);
 
 
 export default router;

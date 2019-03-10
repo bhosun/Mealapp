@@ -1,11 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import Meal from './models/meal.model';
-import Menu from './models/menu.model';
-import Order from './models/order.model';
-import User from './models/user.model';
-import Caterer from './models/caterer.model';
-// import router from './controllers/auth.controller';
+
 
 const app = express();
 const port = process.env.PORT || 8000;
