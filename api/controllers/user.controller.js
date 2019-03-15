@@ -13,7 +13,7 @@ class UserController  {
                 id: newUser.id,
                 name: newUser.name,
             };
-            const jwtToken = jwt.sign({ user: safeUser }, config.secret, {
+            const jwtToken = jwt.sign({ user: safeUser }, 'jembe', {
                 expiresIn: 86400
             });
             return res.status(201).json({
@@ -45,13 +45,13 @@ class UserController  {
                 id: user.id,
                 name: user.name
             };
-            const jwtToken = jwt.sign({ user: safeUser }, config.secret, {
+            const jwtToken = jwt.sign({ user: safeUser }, 'jembe', {
                 expiresIn: 86400
             });
             return res.status(200).json({
                 status: "success",
                 message: "user Logged in",
-                token: `Bearer ${jwtToken}`,
+                token: jwtToken,
                 user: safeUser
             });
         } catch (err) {

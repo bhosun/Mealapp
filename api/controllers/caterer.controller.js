@@ -15,13 +15,13 @@ class CatererController  {
                 phone: caterer.phone,
                 catering_company: caterer.catering_company,
             };
-            const jwtToken = jwt.sign({ caterer: safeCat, isCaterer: true }, config.secret, {
+            const jwtToken = jwt.sign({ caterer: safeCat, isCaterer: true }, 'jembe', {
                 expiresIn: 86400
             });
             return res.status(201).json({
                 status: "success",
                 message: 'User Registered',
-                token: `Bearer ${jwtToken}`,
+                token: jwtToken,
                 newCaterer: safeCat
             });
         } catch(err) {
@@ -49,13 +49,13 @@ class CatererController  {
                 phone: dCaterer.phone,
                 catering_company: dCaterer.catering_company,
             };
-            const jwtToken = jwt.sign({ dCaterer: safeCat, isCaterer: true }, config.secret, {
+            const jwtToken = jwt.sign({ dCaterer: safeCat, isCaterer: true }, 'jembe', {
                 expiresIn: 86400
             });
             return res.status(200).json({
                 status: "success",
                 message: "caterer Logged in",
-                token: `Bearer ${jwtToken}`,
+                token: jwtToken,
                 user: safeCat
             });
         } catch (err) {
