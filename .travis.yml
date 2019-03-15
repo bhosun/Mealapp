@@ -17,7 +17,7 @@ services:
 
 before_script:
   - psql -c 'create database mealApp;' -U postgres
-  - psql -c "CREATE USER postgres WITH PASSWORD bosunbosun71;" -U postgres
+  # - psql -c "CREATE USER postgres WITH PASSWORD bosunbosun71;" -U postgres
   - npm run build  
 
 script:
