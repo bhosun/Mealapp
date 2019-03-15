@@ -2,14 +2,55 @@ import chai from 'chai';
 import chaiHttp from 'chai-http';
 import 'chai/register-should';
 import app from '../index';
-import dummyData from '../utils/dummyData';
 
 chai.use(chaiHttp);
-const should = chai.should();
 
-                    /*
-                    // TESTS
-                    */
+ /*// TESTS */
+
+// Should run first
+describe('Meal', () => {
+    let generatedToken = null;
+    let CateToken = null;
+    /**
+     * Logins user to generate userToken before test
+     */
+    before('Login user to obtain auth token to be used in other operations', (done) => {
+      const adminCredentials = {
+        name: 'JemilaDavies',
+        password: 'password'
+      };
+  
+      chai
+        .request(app)
+        .post('/api/v1/user/login')
+        .send(adminCredentials)
+        .end((err, res) => {
+            res.should.have.status(200);
+            if (!err) {
+                generatedToken = res.body.token;
+            }
+            done();
+        });
+    });
+
+    before('Login Caterer to obtain the main token', (done) => {
+        const catererDetails = {
+            username: 'Dehinde',
+            password: 'password'
+        };
+
+        chai
+           .request(app)
+           .post('/api/v1/caterer/login')
+           .send(catererDetails)
+           .end((err, res) => {
+                res.should.have.status(200);
+                if (!err) {
+                    CateToken = res.body.token;
+                }
+                done();
+           })
+    })
 
 /*
 // Test to get meals /GET
@@ -20,6 +61,7 @@ describe('Get /meals', () => {
         chai
         .request(app)
         .get('/api/v1/meals')
+        .set('authorization', CateToken)
         .end((err, res) => {
             res.should.have.property('status', 200);
             res.body.data.should.be.a('array');
@@ -35,14 +77,13 @@ describe('Get /meals', () => {
 describe('Post /meals', () => {
     it('should not post a meal without a name Field', (done) => {
         const meal = {
-            id: 1,
-            size: 'large',
-            price: '300'
+            imagurl: "jbrbyhrbebhebhevgg"
         }
         chai
         .request(app)
         .post('/api/v1/meals')
         .send(meal)
+        .set('authorization', CateToken)
         .end((err, res) => {
             res.should.have.property('status', 400);
             res.body.should.be.a('object');
@@ -54,23 +95,21 @@ describe('Post /meals', () => {
 
     it('should Post a meal', (done) => {
         const meal = {
-            id: 1,
             name: 'Amala',
-            size: 'large',
-            price: '300'
+            imageurl: 'kvnjuhdvb'
         }
         chai
         .request(app)
         .post('/api/v1/meals')
         .send(meal)
+        .set('authorization', CateToken)
         .end((err, res) => {
             res.should.have.property('status', 201);
             res.body.should.be.a('object');
             res.body.should.have.property('status').eql('success');
-            res.body.data.should.have.property('id')
-            res.body.data.should.have.property('name')
-            res.body.data.should.have.property('size')
-            res.body.data.should.have.property('price')
+            res.body.data.should.have.property('id');
+            res.body.data.should.have.property('name');
+            res.body.data.should.have.property('imageurl');
         done();    
         });
     });
@@ -82,18 +121,17 @@ describe('Post /meals', () => {
 
 describe('get /meals/:id', () => {
     it('should get a meal with a given id', (done) => {
-        const mealId = Number(dummyData.meals[0].id);
+        const mealId = 2;
         chai
         .request(app)
         .get(`/api/v1/meals/${mealId}`)
+        .set('authorization', CateToken)
         .end((err, res) => {
             res.should.have.property('status', 200);
             res.body.should.be.a('object');
             res.body.should.have.property('status').eql('success');
-            res.body.data.should.have.property('id').eql(mealId);
-            res.body.data.should.have.property('name')
-            res.body.data.should.have.property('size')
-            res.body.data.should.have.property('price')
+            res.body.data.fulfillmentValue.should.have.property("name");
+            res.body.data.fulfillmentValue.should.have.property("imageurl");
         done();    
         });
     });
@@ -103,6 +141,7 @@ describe('get /meals/:id', () => {
         chai
         .request(app)
         .get(`/api/v1/meals/${mealId}`)
+        .set('authorization', CateToken)
         .end((err, res) => {
             res.should.have.property('status', 400);
             res.body.should.be.a('object');
@@ -113,28 +152,25 @@ describe('get /meals/:id', () => {
     });
 });
 
-/*
-// test the Put Route
-*/
+// /*
+// // test the Put Route
+// */
 
 describe('Put /meal/:id', () => {
     it('it should update a book by given Id', (done) => {
-        const mealId = Number(dummyData.meals[0].id);
+        const mealId = 1;
         const updateMeal = {name: 'Cocoa ati Ewa',
-                            price: '900',
-                            size: 'medium'
+                            imageurl: 'jdcubeyhh'
                         }
         chai
         .request(app)
         .put(`/api/v1/meals/${mealId}`)
         .send(updateMeal)
+        .set('authorization', CateToken)
         .end((err, res) => {
             res.should.have.property('status', 201);
             res.body.should.be.a('object');
             res.body.should.have.property('status').eql('success');
-            res.body.data.should.have.property('name').eql('Cocoa ati Ewa');
-            res.body.data.should.have.property('price').eql('900');
-            res.body.data.should.have.property('size').eql('medium');
         done()  
         });
     });
@@ -142,13 +178,13 @@ describe('Put /meal/:id', () => {
     it('it should return error for invalid Id', (done) => {
         const mealId = 'o';
         const updateMeal = {name: 'Cocoa ati Ewa',
-                            price: '900',
-                            size: 'medium'
-                        }
+                    imageurl: 'jdcubeyhh'
+                }
         chai
         .request(app)
         .put(`/api/v1/meals/${mealId}`)
         .send(updateMeal)
+        .set('authorization', CateToken)
         .end((err, res) => {
             res.should.have.property('status', 400);
             res.body.should.be.a('object');
@@ -158,34 +194,36 @@ describe('Put /meal/:id', () => {
     });
 });
 
-/*
-// Test the Delete Route
-*/
+    /*
+    // Test the Delete Route
+    */
 
-describe('Delete /meals/:id', () => {
-    it('should delete an id', (done) => {
-        const mealId = Number(dummyData.meals[0].id);
-        chai.
-        request(app)
-        .delete(`/api/v1/meals/${mealId}`)
-        .end((err, res) => {
-            res.should.have.status(200);
-            res.body.should.be.a('object');
-            res.body.should.have.property('status').eql('success');
-        done();
+    describe('Delete /meals/:id', () => {
+        it('should delete an id', (done) => {
+            const mealId = 1;
+            chai.
+            request(app)
+            .delete(`/api/v1/meals/${mealId}`)
+            .set('authorization', CateToken)
+            .end((err, res) => {
+                res.should.have.status(200);
+                res.body.should.be.a('object');
+                res.body.should.have.property('status').eql('success');
+            done();
+            });
         });
-    });
 
-    it('should not delete if Id is null', (done) => {
-        const mealId = 'o';
-        chai
-        .request(app)
-        .delete(`/api/v1/meals/${mealId}`)
-        .end((err, res) => {
-            res.should.have.status(400);
-            res.body.should.be.a('object');
-            res.body.should.have.property('message').eql(`cannot delete meal with id ${mealId} now`);
-        done();
+        it('should not delete if Id is null', (done) => {
+            const mealId = 'o';
+            chai
+            .request(app)
+            .delete(`/api/v1/meals/${mealId}`)
+            .set('authorization', CateToken)
+            .end((err, res) => {
+                res.should.have.status(400);
+                res.body.should.be.a('object');
+            done();
+            });
         });
     });
 });

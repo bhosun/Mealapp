@@ -1,50 +1,38 @@
-import dummyData from '../utils/dummyData';
 import Meal from '../models/meal.model';
 
 const mealService = {
     fetchAllMeals() {
-        const validMeals = dummyData.meals.map((meal) => {
-            const newMeal = new Meal();
-            newMeal.id = meal.id;
-            newMeal.name = meal.name;
-            newMeal.size = meal.size;
-            newMeal.price = meal.price;
-            return newMeal;
-        });
-        return validMeals;
+        return Meal.findAll()
     },
 
-    addMeal(meal) {
-        const mealLength = dummyData.meals.length;
-        const lastId = dummyData.meals[mealLength - 1].id;
-        const newId = lastId + 1;
-        meal.id = newId;
-        dummyData.meals.push(meal);
-        return meal;
+    addMeal(newMeal) {
+        return Meal.create(newMeal);
     },
 
     getAMeal(id) {
-        const meal = dummyData.meals.find(meal => meal.id == id);
-        return meal || {};
+        return Meal.findOne({
+            where: {
+                id: id
+            }
+        })
     },
 
     putAMeal(meal, id) {
-        const oldId = dummyData.meals[id - 1];
-        oldId.name = meal.name
-        oldId.size = meal.size
-        oldId.price = meal.price
-        return meal || {};
+        return Meal.update(
+            {
+                name: meal.name,
+                imageurl: meal.imageurl
+            },
+            {
+                where: {id: id}
+            }
+        )
     },
 
     removeMeal(id) {
-        const foundMeal = dummyData.meals.find(meal => meal.id === Number(id));
-        if (foundMeal) {
-            const index = dummyData.meals.indexOf(foundMeal);
-            if (index > -1) {
-                dummyData.meals.splice(index, 1);
-            }
-        }
-    return foundMeal;
+        return Meal.destroy(
+            {where: {id: id}}
+        )
     }
 }
 
