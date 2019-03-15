@@ -16,7 +16,6 @@ services:
   - postgresql
 
 before_script:
-  - cat .env.travis >> .env
   - psql -c "DROP DATABASE mealApp;" -U postgres
   - psql -c "CREATE DATABASE mealApp;" -U postgres
   - psql -c "CREATE USER postgres WITH PASSWORD 'bosunbosun71';" -U postgres
