@@ -88,7 +88,7 @@ const mealController = {
         const id = req.params.id;
         const remove = mealService.removeMeal(id);
 
-        if(remove == null) {
+        if(Number.isNaN(Number(id))) {
             return res.status(400).json({
                 message: `cannot delete meal with id ${id} now`
             })

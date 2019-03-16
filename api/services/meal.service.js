@@ -10,7 +10,7 @@ const mealService = {
     },
 
     getAMeal(id) {
-        return Meal.find({
+        return Meal.findOne({
             where: {
                 id: id
             }
