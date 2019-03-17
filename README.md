@@ -1,4 +1,4 @@
-# Meal App [![Build Status](https://travis-ci.org/bhosun/Mealapp.svg?branch=develop)](https://travis-ci.org/bhosun/Mealapp) [![Coverage Status](https://coveralls.io/repos/github/bhosun/Mealapp/badge.svg?branch=add-travis-build)](https://coveralls.io/github/bhosun/Mealapp?branch=add-travis-build)
+# Meal App [![Build Status](https://travis-ci.org/bhosun/Mealapp.svg?branch=master)](https://travis-ci.org/bhosun/Mealapp) [![Coverage Status](https://coveralls.io/repos/github/bhosun/Mealapp/badge.svg?branch=add-travis-build)](https://coveralls.io/github/bhosun/Mealapp?branch=add-travis-build)
 
 Meal App is an Ecommerce web app, in which you select from the available Menu which a caterer has set perday place your order and checkout 
 
