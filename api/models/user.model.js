@@ -14,6 +14,10 @@ const User = db.define('user', {
       type: Sequelize.STRING,
       allowNull: false
     },
+    email: {
+      type: Sequelize.STRING,
+      allowNull: false
+    },
     password: {
       type: Sequelize.STRING,
       allowNull: false
@@ -21,5 +25,7 @@ const User = db.define('user', {
     createdAt: Sequelize.DATEONLY,
     updatedAt: Sequelize.DATEONLY
   });
+
+  User.hasMany(Order, { constraints: true, onDelete: 'CASCADE' });
   
   export default User;
