@@ -6,12 +6,20 @@ import config from '../config';
 class UserController  {
      static async registerUser(req, res) {
         try {
-            const { name, password } = req.body;
+            const { name, email, password } = req.body;
             const hashPassword = await bcrypt.hash(password, 8);
-            const newUser = await User.create({name, password: hashPassword});
+            const user = await User.findOne({ where: { name: name}});
+            const emailini = await User.findOne({ where: { email: email}});
+            const newUser = await User.create({name, email, password: hashPassword});
+
+            if(user || emailini) {
+                throw new Error('User Already exists with same name or email bruh');
+            }
+
             const safeUser = {
                 id: newUser.id,
                 name: newUser.name,
+                email: newUser.email
             };
             const jwtToken = jwt.sign({ user: safeUser }, 'jembe', {
                 expiresIn: 86400

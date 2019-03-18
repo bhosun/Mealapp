@@ -1,14 +1,18 @@
 import Caterer from '../models/caterer.model';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
-import config from '../config';
 
 class CatererController  {
      static async registerCaterer(req, res) {
         try {
             const { username, phone, catering_company, password } = req.body;
             const hashPassword = await bcrypt.hash(password, 8);
+            const dCat = await Caterer.findOne({ where: { username: username}});
             const caterer = await Caterer.create({username, phone, catering_company, password: hashPassword});
+
+            if(dCat) {
+                throw new Error('Caterer Already exists');
+            }
             const safeCat = {
                 id: caterer.id,
                 username: caterer.username,
